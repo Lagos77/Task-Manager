@@ -19,6 +19,11 @@ object Versions {
     const val fragmentViewModelVersion = "1.5.4"
     const val daggerHiltVersion = "2.44"
     const val daggerHiltCompilerVersion = "2.44"
+
+    const val splashScreenVersion = "1.0.0"
+
+    const val componentUi = "2.5.2"
+    const val componentFragment = "2.5.2"
 }
 
 object Dependency {
@@ -31,6 +36,12 @@ object Dependency {
         "androidx.activity:activity-ktx:${Versions.activityViewModelVersion}"
     const val fragmentViewModel =
         "androidx.fragment:fragment-ktx:${Versions.fragmentViewModelVersion}"
+
+    const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreenVersion}"
+
+    const val componentUI = "androidx.navigation:navigation-ui-ktx:${Versions.componentUi}"
+    const val componentFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.componentFragment}"
 }
 
 fun DependencyHandler.hilt() {
@@ -38,6 +49,15 @@ fun DependencyHandler.hilt() {
     kapt(Dependency.HiltCompile)
     kapt(Dependency.activityViewModel)
     kapt(Dependency.fragmentViewModel)
+}
+
+fun DependencyHandler.splashScreen() {
+    implementation(Dependency.splashScreen)
+}
+
+fun DependencyHandler.navigationComponent() {
+    implementation(Dependency.componentUI)
+    implementation(Dependency.componentFragment)
 }
 
 private fun DependencyHandler.implementation(name: String) {
