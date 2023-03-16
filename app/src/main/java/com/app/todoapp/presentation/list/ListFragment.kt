@@ -11,12 +11,18 @@ import com.app.todoapp.databinding.FragmentListBinding
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
+    private var listItem = ArrayList<String>()
+    private lateinit var listAdapter: ListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
+        var addedList = arrayListOf("Hello", "Testing", "This is a test", "Testing again")
+        listAdapter = ListAdapter(addedList)
+        binding.recycleList.adapter = listAdapter
+
         return binding.root
     }
 

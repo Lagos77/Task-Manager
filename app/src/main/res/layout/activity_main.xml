@@ -4,18 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
     tools:context="com.example.todoapp.MainActivity">
 
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/my_nav"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/todo_app"
+        android:layout_marginVertical="30dp"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/logo"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/todoicon"
+        android:layout_marginStart="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintBottom_toTopOf="@+id/etLogin"/>
+
+    <EditText
+        android:id="@+id/etLogin"
+        android:layout_width="242dp"
+        android:layout_height="48dp"
+        android:background="@drawable/login_edit_background"
+        android:drawableStart="@drawable/icon_user"
+        android:drawablePadding="10dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/username"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="242dp"
+        android:layout_height="48dp"
+        android:background="@drawable/login_edit_background"
+        android:drawableStart="@drawable/icon_password"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="130dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#8E0923"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

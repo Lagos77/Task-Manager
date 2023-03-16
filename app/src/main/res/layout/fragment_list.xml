@@ -11,7 +11,8 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#490000"
+        android:padding="10dp"
+        android:background="#8E0923"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:padding="5dp"
             android:text="@string/hello_blank_fragment"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -30,14 +30,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_marginBottom="236dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        tools:listitem="@layout/item"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

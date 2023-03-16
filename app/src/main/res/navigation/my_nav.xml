@@ -3,22 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/listFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.app.todoapp.presentation.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_listFragment"
-            app:destination="@id/listFragment"
-            app:popUpTo="@id/listFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_login"/>
 
     <fragment
         android:id="@+id/listFragment"
         android:name="com.app.todoapp.presentation.list.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.app.todoapp.presentation.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.app.todoapp.presentation.note.NoteFragment"
+        android:label="fragment_note"
+        tools:layout="@layout/fragment_note" />
+    <fragment
+        android:id="@+id/noteSelectedFragment"
+        android:name="com.app.todoapp.presentation.noteSelected.NoteSelectedFragment"
+        android:label="fragment_note_selected"
+        tools:layout="@layout/fragment_note_selected" />
 </navigation>

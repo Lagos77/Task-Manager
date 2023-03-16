@@ -24,6 +24,7 @@ object Versions {
 
     const val componentUi = "2.5.2"
     const val componentFragment = "2.5.2"
+    const val legacySupportVersion = "1.0.0"
 }
 
 object Dependency {
@@ -42,6 +43,8 @@ object Dependency {
     const val componentUI = "androidx.navigation:navigation-ui-ktx:${Versions.componentUi}"
     const val componentFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.componentFragment}"
+    const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupportVersion}"
+
 }
 
 fun DependencyHandler.hilt() {
@@ -58,6 +61,7 @@ fun DependencyHandler.splashScreen() {
 fun DependencyHandler.navigationComponent() {
     implementation(Dependency.componentUI)
     implementation(Dependency.componentFragment)
+    implementation(Dependency.legacySupport)
 }
 
 private fun DependencyHandler.implementation(name: String) {
