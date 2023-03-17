@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.gms.google-services")
+    id("com.google.dagger.hilt.android")
 }
 
 kapt {
@@ -61,8 +62,11 @@ dependencies {
     testImplementation(Dependency.junit)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
     implementation(platform("com.google.firebase:firebase-bom:26.4.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation ("com.google.firebase:firebase-auth-ktx")
 
     //Hilt
     hilt()

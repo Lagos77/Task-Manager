@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.app.todoapp.R
 import com.app.todoapp.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private var listItem = ArrayList<String>()
     private lateinit var listAdapter: ListAdapter
 
     override fun onCreateView(

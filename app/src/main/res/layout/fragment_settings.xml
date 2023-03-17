@@ -11,7 +11,7 @@
         android:id="@+id/logutBtn"
         android:layout_width="130dp"
         android:layout_height="65dp"
-        android:backgroundTint="#8E0923"
+        android:backgroundTint="#030B31"
         android:text="@string/logout"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"

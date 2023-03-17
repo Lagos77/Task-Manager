@@ -9,7 +9,8 @@ import com.app.todoapp.R
 
 class ListAdapter(private var itemList: List<String>) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val itemText: TextView = view.findViewById(R.id.text)
+        val itemTitle: TextView = view.findViewById(R.id.cardTitle)
+        val itemText: TextView = view.findViewById(R.id.cardDescription)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

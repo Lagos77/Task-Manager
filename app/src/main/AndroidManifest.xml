@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".Application"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,10 +14,13 @@
         android:theme="@style/Theme.ToDoApp"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.create.CreateUserActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.todoapp.SecondActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.todoapp.MainActivity"
+            android:name=".presentation.login.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppSplash">
             <intent-filter>
