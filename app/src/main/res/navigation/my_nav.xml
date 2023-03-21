@@ -4,17 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
     app:startDestination="@id/listFragment">
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.app.todoapp.presentation.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login"/>
+<!--    <fragment-->
+<!--        android:id="@+id/loginFragment"-->
+<!--        android:name="com.app.todoapp.presentation.login.LoginFragment"-->
+<!--        android:label="fragment_login"-->
+<!--        tools:layout="@layout/fragment_login"/>-->
 
     <fragment
         android:id="@+id/listFragment"
         android:name="com.app.todoapp.presentation.list.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_noteFragment"
+            app:popUpTo="@id/noteFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/noteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.app.todoapp.presentation.settings.SettingsFragment"
@@ -24,7 +30,11 @@
         android:id="@+id/noteFragment"
         android:name="com.app.todoapp.presentation.note.NoteFragment"
         android:label="fragment_note"
-        tools:layout="@layout/fragment_note" />
+        tools:layout="@layout/fragment_note" >
+        <action
+            android:id="@+id/action_noteFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
     <fragment
         android:id="@+id/noteSelectedFragment"
         android:name="com.app.todoapp.presentation.noteSelected.NoteSelectedFragment"

@@ -17,10 +17,10 @@
             android:name=".presentation.create.CreateUserActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.todoapp.SecondActivity"
+            android:name=".presentation.login.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.login.MainActivity"
+            android:name="com.example.todoapp.SecondActivity"
             android:exported="true"
             android:theme="@style/Theme.AppSplash">
             <intent-filter>

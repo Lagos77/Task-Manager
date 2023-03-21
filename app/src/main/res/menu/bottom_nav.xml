@@ -6,7 +6,12 @@
         android:icon="@drawable/icon_home"/>
     <item android:title="@string/note"
         android:id="@+id/noteFragment"
+        android:visible="true"
         android:icon="@drawable/icon_post"/>
+    <item android:title="@string/save"
+        android:id="@+id/saveNote"
+        android:visible="false"
+        android:icon="@drawable/icon_save"/>
     <item android:title="@string/settings"
         android:id="@+id/settingsFragment"
         android:icon="@drawable/icon_settings"/>

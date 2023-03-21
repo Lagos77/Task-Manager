@@ -2,6 +2,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.android.library")
     id("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -42,5 +43,9 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.4.4")
     implementation ("com.google.firebase:firebase-auth-ktx")
 
+    //Hilt
     hilt()
+
+    //Room
+    room()
 }

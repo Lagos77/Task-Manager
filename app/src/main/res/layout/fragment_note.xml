@@ -16,33 +16,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <TextView
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            android:layout_marginVertical="10dp"
-            android:padding="5dp"
-            android:maxLines="1"
-            android:hint="@string/title"
-            android:textColor="@color/black"
+            android:text="Add a note"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+<!--        <EditText-->
+<!--            android:id="@+id/noteTitle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/white"-->
+<!--            android:layout_marginVertical="10dp"-->
+<!--            android:padding="5dp"-->
+<!--            android:maxLines="1"-->
+<!--            android:hint="@string/title"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
 
     </FrameLayout>
 
     <EditText
-        android:id="@+id/noteText"
+        android:id="@+id/edText"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:textColor="@color/black"
-        android:gravity="top|left"
-        android:hint="@string/write_something_here"
-        android:background="@color/white"
-        android:layout_marginHorizontal="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="Text..."
+        android:textSize="18sp"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/noteText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginHorizontal="5dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:gravity="top|left"-->
+<!--        android:hint="@string/write_something_here"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.497"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#030B31"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icon_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fab_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="504dp"
+        android:backgroundTint="#030B31"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icon_check"
+        app:layout_constraintBottom_toTopOf="@+id/fab_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
