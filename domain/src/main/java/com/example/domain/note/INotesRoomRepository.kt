@@ -11,7 +11,7 @@ interface INotesRoomRepository {
 
     suspend fun getAllNotes() : Flow<List<NoteInfo>>
 
-//    suspend fun getNote(id: Int) : NoteInfo
+    suspend fun getNote(id: Int) : NoteInfo
 
     suspend fun deleteNote(noteInfo: NoteInfo)
 

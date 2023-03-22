@@ -1,5 +1,6 @@
 package com.example.domain.note
 
+import android.provider.ContactsContract.CommonDataKinds.Note
 import com.example.domain.entity.NoteInfo
 import com.example.domain.note.INotesRoomRepository
 import kotlinx.coroutines.flow.Flow
@@ -9,6 +10,10 @@ class NotesRoomUseCase @Inject constructor(private val INotesRoomRepository: INo
 
     suspend fun getAllNotes(): Flow<List<NoteInfo>> {
         return INotesRoomRepository.getAllNotes()
+    }
+
+    suspend fun getNote(id: Int): NoteInfo {
+        return INotesRoomRepository.getNote(id)
     }
 
     suspend fun addNote(noteInfo: NoteInfo) {

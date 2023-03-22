@@ -6,14 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.todoapp.databinding.FragmentListBinding
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private lateinit var listAdapter: ListAdapter
+
+    private val viewModel: ListViewModel by viewModels()
 
     @Inject
     lateinit var notesAdapter: NotesAdapter
@@ -23,9 +28,9 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
-//        var addedList = arrayListOf("Kotlin", "MVVM", "Retrofit", "Annotations & Coroutines")
-//        listAdapter = ListAdapter(addedList)
-//        binding.recycleList.adapter = listAdapter
+
+        binding.recycleList.adapter = notesAdapter
+
 
         binding.fab.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToNoteFragment()
@@ -40,3 +45,8 @@ class ListFragment : Fragment() {
         _binding = null
     }
 }
+
+//        private lateinit var listAdapter: ListAdapter
+//        var addedList = arrayListOf("Kotlin", "MVVM", "Retrofit", "Annotations & Coroutines")
+//        listAdapter = ListAdapter(addedList)
+//        binding.recycleList.adapter = listAdapter

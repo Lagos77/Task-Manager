@@ -1,5 +1,6 @@
 package com.example.data.note
 
+import android.annotation.SuppressLint
 import com.example.data.note.entity.Note
 import com.example.data.source.local.NoteDao
 import com.example.domain.entity.NoteInfo
@@ -26,9 +27,11 @@ class NotesRoomRepositoryImpl @Inject constructor(private val dao: NoteDao) : IN
         }
     }
 
-//    override suspend fun getNote(id: Int): NoteInfo {
-//        TODO("Not yet implemented")
-//    }
+    @SuppressLint("SuspiciousIndentation")
+    override suspend fun getNote(id: Int): NoteInfo {
+      val noteInstance = dao.getNote(id)
+        return NoteInfo(noteInstance.id,noteInstance.note)
+    }
 
     override suspend fun deleteNote(noteInfo: NoteInfo) {
         dao.delete(Note(noteInfo.id, noteInfo.note))
