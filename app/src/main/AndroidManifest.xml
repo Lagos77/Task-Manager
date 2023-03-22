@@ -20,7 +20,7 @@
             android:name=".presentation.login.MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.todoapp.SecondActivity"
+            android:name=".presentation.SecondActivity"
             android:exported="true"
             android:theme="@style/Theme.AppSplash">
             <intent-filter>

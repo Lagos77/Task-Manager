@@ -1,12 +1,11 @@
-package com.example.data
+package com.example.data.note.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import dagger.hilt.EntryPoint
 
 @Entity(tableName = "note_table")
-data class Notes (
+data class Note (
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val note: String
+    val id: Int = 0,
+    val note: String = ""
 )

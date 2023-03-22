@@ -1,7 +1,7 @@
 package com.example.data.firebaseAuth
 
 import android.util.Log
-import com.example.domain.entity.firebaseAuth.FirebaseAuthRepository
+import com.example.domain.firebaseAuth.FirebaseAuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import javax.inject.Inject
 

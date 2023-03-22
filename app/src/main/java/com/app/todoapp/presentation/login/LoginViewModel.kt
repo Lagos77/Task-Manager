@@ -2,9 +2,8 @@ package com.app.todoapp.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.entity.firebaseAuth.FirebaseAuthRepository
-import com.example.domain.entity.firebaseAuth.FirebaseAuthUseCase
-//import com.example.domain.entity.firebaseAuth.FirebaseAuthUseCase
+import com.example.domain.firebaseAuth.FirebaseAuthUseCase
+//import com.example.domain.FirebaseAuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

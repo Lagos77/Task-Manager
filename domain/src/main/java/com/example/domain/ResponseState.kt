@@ -1,4 +1,4 @@
-package com.example.domain.entity.Utils
+package com.example.domain
 
 sealed class ResponseState<T>(
     val data: T? = null,

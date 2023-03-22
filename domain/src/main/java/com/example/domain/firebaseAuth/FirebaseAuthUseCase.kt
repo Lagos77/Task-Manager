@@ -1,4 +1,4 @@
-package com.example.domain.entity.firebaseAuth
+package com.example.domain.firebaseAuth
 
 import javax.inject.Inject
 
