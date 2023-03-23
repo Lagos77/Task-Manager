@@ -4,22 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
     app:startDestination="@id/listFragment">
-<!--    <fragment-->
-<!--        android:id="@+id/loginFragment"-->
-<!--        android:name="com.app.todoapp.presentation.login.LoginFragment"-->
-<!--        android:label="fragment_login"-->
-<!--        tools:layout="@layout/fragment_login"/>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/loginFragment"-->
+    <!--        android:name="com.app.todoapp.presentation.login.LoginFragment"-->
+    <!--        android:label="fragment_login"-->
+    <!--        tools:layout="@layout/fragment_login"/>-->
 
     <fragment
         android:id="@+id/listFragment"
         android:name="com.app.todoapp.presentation.list.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
             app:popUpTo="@id/noteFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/noteFragment" />
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_listFragment_to_noteSelectedFragment"
+            app:destination="@id/noteSelectedFragment"
+            app:popUpTo="@id/noteFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -30,7 +37,7 @@
         android:id="@+id/noteFragment"
         android:name="com.app.todoapp.presentation.note.NoteFragment"
         android:label="fragment_note"
-        tools:layout="@layout/fragment_note" >
+        tools:layout="@layout/fragment_note">
         <action
             android:id="@+id/action_noteFragment_to_listFragment"
             app:destination="@id/listFragment" />
@@ -39,5 +46,15 @@
         android:id="@+id/noteSelectedFragment"
         android:name="com.app.todoapp.presentation.noteSelected.NoteSelectedFragment"
         android:label="fragment_note_selected"
-        tools:layout="@layout/fragment_note_selected" />
+        tools:layout="@layout/fragment_note_selected">
+
+        <action
+            android:id="@+id/action_noteSelectedFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+
+        <argument
+            android:name="note"
+            app:argType="string" />
+
+    </fragment>
 </navigation>
