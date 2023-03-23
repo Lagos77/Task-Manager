@@ -2,42 +2,39 @@ package com.example.data.note
 
 import android.annotation.SuppressLint
 import com.example.data.note.entity.Note
+import com.example.data.note.mapper.mapToNote
+import com.example.data.note.mapper.mapToNoteInfo
 import com.example.data.source.local.NoteDao
 import com.example.domain.entity.NoteInfo
 import com.example.domain.note.INotesRoomRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 
 class NotesRoomRepositoryImpl @Inject constructor(private val dao: NoteDao) : INotesRoomRepository {
 
     override suspend fun addNotes(noteInfo: NoteInfo) {
-        dao.addNote(Note(noteInfo.id, noteInfo.note))
+        dao.addNote(noteInfo.mapToNote())
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun getAllNotes(): Flow<List<NoteInfo>> {
-        return dao.getAll().flatMapLatest { list->
-            flow {
-                list.map {
-                    NoteInfo(it.id, it.note)
-                }
-            }
+        return dao.getAll().mapLatest { list ->
+            list.map { it.mapToNoteInfo() }
         }
     }
 
     @SuppressLint("SuspiciousIndentation")
     override suspend fun getNote(id: Int): NoteInfo {
-      val noteInstance = dao.getNote(id)
-        return NoteInfo(noteInstance.id,noteInstance.note)
+        return dao.getNote(id).mapToNoteInfo()
     }
 
     override suspend fun deleteNote(noteInfo: NoteInfo) {
-        dao.delete(Note(noteInfo.id, noteInfo.note))
+        dao.delete(noteInfo.mapToNote())
     }
 
     override suspend fun updateNote(noteInfo: NoteInfo) {
-        dao.updateNote(Note(noteInfo.id, noteInfo.note))
+        dao.updateNote(noteInfo.mapToNote())
     }
 }

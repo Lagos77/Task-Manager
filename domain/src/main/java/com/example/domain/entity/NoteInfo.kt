@@ -1,6 +1,6 @@
 package com.example.domain.entity
 
 data class NoteInfo (
-    val id: Int,
-    val note: String
+    val id: Int = 0,
+    val note: String = ""
 )

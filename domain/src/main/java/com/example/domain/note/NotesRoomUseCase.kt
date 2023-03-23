@@ -1,30 +1,28 @@
 package com.example.domain.note
 
-import android.provider.ContactsContract.CommonDataKinds.Note
 import com.example.domain.entity.NoteInfo
-import com.example.domain.note.INotesRoomRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class NotesRoomUseCase @Inject constructor(private val INotesRoomRepository: INotesRoomRepository) {
+class NotesRoomUseCase @Inject constructor(private val notesRepository: INotesRoomRepository) {
 
     suspend fun getAllNotes(): Flow<List<NoteInfo>> {
-        return INotesRoomRepository.getAllNotes()
+        return notesRepository.getAllNotes()
     }
 
     suspend fun getNote(id: Int): NoteInfo {
-        return INotesRoomRepository.getNote(id)
+        return notesRepository.getNote(id)
     }
 
     suspend fun addNote(noteInfo: NoteInfo) {
-        return INotesRoomRepository.addNotes(noteInfo)
+        return notesRepository.addNotes(noteInfo)
     }
 
     suspend fun deleteNote(noteInfo: NoteInfo) {
-        return INotesRoomRepository.deleteNote(noteInfo)
+        return notesRepository.deleteNote(noteInfo)
     }
 
     suspend fun updateNote(noteInfo: NoteInfo) {
-        return INotesRoomRepository.updateNote(noteInfo)
+        return notesRepository.updateNote(noteInfo)
     }
 }
