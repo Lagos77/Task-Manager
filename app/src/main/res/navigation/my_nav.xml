@@ -53,6 +53,14 @@
             app:destination="@id/listFragment" />
 
         <argument
+            android:name="noteId"
+            app:argType="integer" />
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
             android:name="note"
             app:argType="string" />
 

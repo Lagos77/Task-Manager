@@ -13,9 +13,9 @@ import com.example.domain.entity.NoteInfo
 //}
 
 fun NoteInfo.mapToNote(): Note {
-    return Note(this.id, this.note)
+    return Note(this.id, this.title, this.note)
 }
 
-fun Note.mapToNoteInfo() : NoteInfo  {
-    return NoteInfo(this.id, this.note)
+fun Note.mapToNoteInfo(): NoteInfo {
+    return NoteInfo(this.id, this.title, this.note)
 }

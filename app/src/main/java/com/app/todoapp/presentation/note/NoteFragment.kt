@@ -25,13 +25,18 @@ class NoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentNoteBinding.inflate(inflater,container,false)
+        _binding = FragmentNoteBinding.inflate(inflater, container, false)
 
         binding.fabAdd.setOnClickListener {
-            addToDatabase()
-            val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
-            Utils.showToast("Successfully added!", requireContext())
-            findNavController().navigate(action)
+            if (binding.edText.text.isNullOrBlank() || binding.inputTitle.text.isNullOrBlank()) {
+                Utils.showToast("Fields can't be empty", requireContext())
+            } else {
+                addToDatabase()
+                val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
+                Utils.showToast("Successfully added!", requireContext())
+                findNavController().navigate(action)
+            }
+
         }
 
         binding.fabCancel.setOnClickListener {
@@ -42,8 +47,9 @@ class NoteFragment : Fragment() {
         return binding.root
     }
 
-    fun addToDatabase() {
-        val noteInfo = NoteInfo(0,binding.edText.text.toString())
+    private fun addToDatabase() {
+        val noteInfo =
+            NoteInfo(0, binding.inputTitle.text.toString(), binding.edText.text.toString())
         viewModel.addNote(noteInfo)
     }
 }
