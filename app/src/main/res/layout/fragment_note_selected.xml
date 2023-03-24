@@ -40,6 +40,34 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#030B31"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icon_edit"
+        app:layout_constraintBottom_toTopOf="@+id/fab_delete"
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#030B31"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icon_delete"
+        app:layout_constraintBottom_toTopOf="@+id/fab_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

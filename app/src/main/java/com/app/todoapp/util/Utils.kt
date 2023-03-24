@@ -6,8 +6,6 @@ import android.content.DialogInterface
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.app.todoapp.R
-import com.google.android.material.snackbar.Snackbar
 
 object Utils {
 
@@ -18,6 +16,18 @@ object Utils {
             setTitle(title)
             setMessage(message)
             setPositiveButton("OK", listener)
+            builder.show()
+        }
+    }
+
+    fun questionAlert(context: Context, title: String, message: String, positive: DialogInterface.OnClickListener, negative: DialogInterface.OnClickListener) {
+        val builder = AlertDialog.Builder(context)
+        with(builder) {
+            create()
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton("OK", positive)
+            setNegativeButton("Cancel", negative)
             builder.show()
         }
     }
