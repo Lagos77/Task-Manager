@@ -1,6 +1,5 @@
 package com.app.todoapp.presentation.note
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,41 +7,38 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.app.todoapp.R
-import com.app.todoapp.databinding.FragmentNoteBinding
+import com.app.todoapp.databinding.FragmentCreateBinding
 import com.app.todoapp.util.Utils
 import com.example.domain.entity.NoteInfo
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoteFragment : Fragment() {
-    private var _binding: FragmentNoteBinding? = null
+class CreateFragment : Fragment() {
+    private var _binding: FragmentCreateBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NoteViewModel by viewModels()
+    private val viewModel: CreateViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentNoteBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentCreateBinding.inflate(inflater, container, false)
 
-        binding.fabAdd.setOnClickListener {
+        binding.btnUpdate.setOnClickListener {
             if (binding.edText.text.isNullOrBlank() || binding.inputTitle.text.isNullOrBlank()) {
                 Utils.showToast("Fields can't be empty", requireContext())
             } else {
                 addToDatabase()
-                val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
+                val action = CreateFragmentDirections.actionCreateFragmentToListFragment()
                 Utils.showToast("Successfully added!", requireContext())
                 findNavController().navigate(action)
             }
 
         }
 
-        binding.fabCancel.setOnClickListener {
-            val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
-            findNavController().navigate(action)
-        }
+//        binding.fabCancel.setOnClickListener {
+//            val action = CreateFragmentDirections.actionNoteFragmentToListFragment()
+//            findNavController().navigate(action)
+//        }
 
         return binding.root
     }

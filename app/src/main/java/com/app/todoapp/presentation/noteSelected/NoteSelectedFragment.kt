@@ -1,17 +1,13 @@
 package com.app.todoapp.presentation.noteSelected
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.app.todoapp.R
 import com.app.todoapp.databinding.FragmentNoteSelectedBinding
 import com.app.todoapp.util.Utils
 import com.example.domain.entity.NoteInfo
@@ -27,7 +23,7 @@ class NoteSelectedFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentNoteSelectedBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,7 +32,10 @@ class NoteSelectedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.noteTitle.text = args.title
         binding.textNote.text = args.note
-        binding.fabEdit.setColorFilter(ContextCompat.getColor(requireContext(),R.color.white))
+
+        binding.fabEdit.setOnClickListener {
+
+        }
 
         binding.fabDelete.setOnClickListener {
             Utils.questionAlert(requireContext(),"Deleting", "Are you sure you want to delete this note?",

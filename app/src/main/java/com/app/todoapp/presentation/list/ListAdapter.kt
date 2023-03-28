@@ -16,6 +16,8 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val itemTitle: TextView = view.findViewById(R.id.cardTitle)
         val itemText: TextView = view.findViewById(R.id.cardDescription)
+        val date: TextView = view.findViewById(R.id.dateAdded)
+        val time: TextView = view.findViewById(R.id.timeAdded)
 
     }
 
@@ -26,10 +28,6 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun deleteData(position: Int) {
-        adapterData.removeAt(position)
-        notifyItemRemoved(position)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(

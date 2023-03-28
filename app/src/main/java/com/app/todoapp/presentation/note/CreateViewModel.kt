@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCase) : ViewModel(){
+class CreateViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCase) : ViewModel(){
 
     fun addNote(noteInfo: NoteInfo) {
         viewModelScope.launch {

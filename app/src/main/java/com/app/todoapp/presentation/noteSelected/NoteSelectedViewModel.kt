@@ -12,9 +12,15 @@ import javax.inject.Inject
 class NoteSelectedViewModel @Inject constructor(private val useCase: NotesRoomUseCase) :
     ViewModel() {
 
-        fun delete(noteInfo: NoteInfo) {
-            viewModelScope.launch {
-                useCase.deleteNote(noteInfo)
-            }
+    fun update(noteInfo: NoteInfo) {
+        viewModelScope.launch {
+            useCase.updateNote(noteInfo)
         }
+    }
+
+    fun delete(noteInfo: NoteInfo) {
+        viewModelScope.launch {
+            useCase.deleteNote(noteInfo)
+        }
+    }
 }

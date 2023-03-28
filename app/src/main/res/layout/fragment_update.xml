@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.noteSelected.NoteSelectedFragment">
+    tools:context=".presentation.noteUpdate.UpdateFragment">
 
     <FrameLayout
         android:id="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#030B31"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/noteTitle"
@@ -29,65 +29,48 @@
 
     <TextView
         android:id="@+id/textNote"
+        app:layout_constraintBottom_toTopOf="@+id/fab_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:hint="@string/text"
-        android:textSize="18sp"
         android:padding="2dp"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/fab_edit"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textSize="18sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         app:backgroundTint="#FFC107"
-        app:tint="@color/white"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/icon_edit"
-        app:layout_constraintBottom_toTopOf="@+id/fab_delete"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
-        app:layout_constraintHorizontal_bias="0.926"
-        app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/edit" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        app:backgroundTint="#F44336"
-        app:tint="@color/white"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/icon_delete"
         app:layout_constraintBottom_toTopOf="@+id/fab_cancel"
         app:layout_constraintEnd_toEndOf="@+id/frameLayout"
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/delete" />
+        app:tint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:contentDescription="@string/edit"
+        android:focusable="true"
+        android:src="@drawable/icon_edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:backgroundTint="#030B31"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginBottom="30dp"
-        app:tint="@color/white"
-        android:src="@drawable/icon_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/frameLayout"
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/cancel" />
-
+        app:tint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:contentDescription="@string/cancel"
+        android:focusable="true"
+        android:src="@drawable/icon_cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
