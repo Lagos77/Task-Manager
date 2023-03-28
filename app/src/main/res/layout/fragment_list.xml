@@ -44,18 +44,16 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="#030B31"
-        android:src="@drawable/icon_post"
-        app:tint="@color/white"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="35dp"
         android:clickable="true"
-        android:focusable="true"
         android:contentDescription="@string/add"
+        android:focusable="true"
+        android:src="@drawable/icon_post"
+        app:backgroundTint="#030B31"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.957" />
+        app:tint="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

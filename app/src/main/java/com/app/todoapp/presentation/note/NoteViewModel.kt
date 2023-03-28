@@ -1,4 +1,4 @@
-package com.app.todoapp.presentation.noteSelected
+package com.app.todoapp.presentation.note
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,18 +9,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NoteSelectedViewModel @Inject constructor(private val useCase: NotesRoomUseCase) :
-    ViewModel() {
+class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCase) : ViewModel(){
 
-    fun update(noteInfo: NoteInfo) {
+    fun addNote(noteInfo: NoteInfo) {
         viewModelScope.launch {
-            useCase.updateNote(noteInfo)
+            roomUseCase.addNote(noteInfo)
         }
     }
 
-    fun delete(noteInfo: NoteInfo) {
+    fun updateNote(noteInfo: NoteInfo) {
         viewModelScope.launch {
-            useCase.deleteNote(noteInfo)
+            roomUseCase.updateNote(noteInfo)
         }
     }
 }

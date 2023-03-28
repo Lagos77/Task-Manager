@@ -2,13 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="15dp"
-    android:background="@color/white"
+    android:layout_marginHorizontal="5dp"
     android:layout_marginVertical="10dp"
-    android:layout_marginHorizontal="5dp">
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -20,45 +20,53 @@
             android:id="@+id/cardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:maxLines="1"
             android:text="@string/note"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:textStyle="bold"
             tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/cardDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="1"
+            android:layout_below="@+id/cardTitle"
             android:ellipsize="end"
-            android:maxLength="20"
+            android:maxLength="15"
+            android:maxLines="1"
             android:text="@string/note_text"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_below="@+id/cardTitle"/>
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/dateAdded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:textSize="15sp"
+            android:layout_toLeftOf="@+id/delete"
             android:text="@string/date"
+            android:textSize="15sp"
             tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/timeAdded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_below="@+id/dateAdded"
-            android:textSize="15sp"
-            android:text="@string/time" />
+            android:layout_toLeftOf="@+id/delete"
+            android:text="@string/time"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/icon_delete" />
 
     </RelativeLayout>
-
 
 
 </androidx.cardview.widget.CardView>

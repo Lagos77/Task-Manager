@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.app.todoapp.databinding.FragmentListBinding
+import com.app.todoapp.util.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,17 +30,35 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listAdapter.setOnClickListener { index, item ->
-            val action = ListFragmentDirections.actionListFragmentToNoteSelectedFragment(
+        listAdapter.setOnClickListener { _, item ->
+            val action = ListFragmentDirections.actionListFragmentToNoteFragment(
                 item.id,
                 item.title,
                 item.note,
+                item.date,
+                item.time
             )
             findNavController().navigate(action)
         }
+
+        listAdapter.deletePosition { _, noteInfo ->
+            Utils.questionAlert(
+                requireContext(),
+                "Deleting",
+                "Are you sure you want to delete ${noteInfo.title}?",
+                { _, _ ->
+                    Utils.showToast("${noteInfo.title} deleted!", requireContext())
+                    viewModel.delete(noteInfo)
+                },
+                { dialog, _ ->
+                    dialog.dismiss()
+                })
+        }
+
+
         binding.recycleList.adapter = listAdapter
         binding.fab.setOnClickListener {
-            val action = ListFragmentDirections.actionListFragmentToNoteFragment()
+            val action = ListFragmentDirections.actionListFragmentToNoteFragment(-1, "", "", "", "")
             findNavController().navigate(action)
         }
         observeList()

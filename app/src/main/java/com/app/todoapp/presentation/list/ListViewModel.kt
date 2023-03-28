@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.NoteInfo
 import com.example.domain.note.NotesRoomUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,7 +14,7 @@ import javax.inject.Inject
 class ListViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCase) : ViewModel() {
 
     private val _allNotes = MutableLiveData<List<NoteInfo>>()
-    val allNotes : LiveData<List<NoteInfo>> get() = _allNotes
+    val allNotes: LiveData<List<NoteInfo>> get() = _allNotes
 
     fun getAllNotes() {
         viewModelScope.launch {
@@ -25,9 +24,9 @@ class ListViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
         }
     }
 
-    fun getNote(id: Int) {
+    fun delete(noteInfo: NoteInfo) {
         viewModelScope.launch {
-            roomUseCase.getNote(id)
+            roomUseCase.deleteNote(noteInfo)
         }
     }
 }

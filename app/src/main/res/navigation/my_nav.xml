@@ -17,14 +17,8 @@
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_noteFragment"
-            app:destination="@id/createFragment"
-            app:popUpTo="@id/createFragment"
-            app:popUpToInclusive="true" />
-
-        <action
-            android:id="@+id/action_listFragment_to_noteSelectedFragment"
-            app:destination="@id/noteSelectedFragment"
-            app:popUpTo="@id/createFragment"
+            app:destination="@id/noteFragment"
+            app:popUpTo="@id/noteFragment"
             app:popUpToInclusive="true" />
 
     </fragment>
@@ -34,22 +28,12 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
-        android:id="@+id/createFragment"
-        android:name="com.app.todoapp.presentation.note.CreateFragment"
+        android:id="@+id/noteFragment"
+        android:name="com.app.todoapp.presentation.note.NoteFragment"
         android:label="fragment_note"
-        tools:layout="@layout/fragment_create">
+        tools:layout="@layout/fragment_note">
         <action
-            android:id="@+id/action_createFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/noteSelectedFragment"
-        android:name="com.app.todoapp.presentation.noteSelected.NoteSelectedFragment"
-        android:label="fragment_note_selected"
-        tools:layout="@layout/fragment_note_selected">
-
-        <action
-            android:id="@+id/action_noteSelectedFragment_to_listFragment"
+            android:id="@+id/action_noteFragment_to_listFragment"
             app:destination="@id/listFragment" />
 
         <argument
@@ -63,6 +47,15 @@
         <argument
             android:name="note"
             app:argType="string" />
+
+        <argument
+            android:name="date"
+            app:argType="string" />
+
+        <argument
+            android:name="time"
+            app:argType="string" />
+
 
     </fragment>
 </navigation>

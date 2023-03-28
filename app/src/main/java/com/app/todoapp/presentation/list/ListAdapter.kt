@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.todoapp.R
@@ -18,6 +19,7 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         val itemText: TextView = view.findViewById(R.id.cardDescription)
         val date: TextView = view.findViewById(R.id.dateAdded)
         val time: TextView = view.findViewById(R.id.timeAdded)
+        val delete: ImageView = view.findViewById(R.id.delete)
 
     }
 
@@ -41,15 +43,26 @@ class ListAdapter() : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         val item = adapterData[position]
         holder.itemTitle.text = item.title
         holder.itemText.text = item.note
+        holder.date.text = item.date
+        holder.time.text = item.time
         holder.itemView.setOnClickListener {
             onClick?.invoke(position, adapterData[position])
+        }
+        holder.delete.setOnClickListener {
+            deletePos?.invoke(position, adapterData[position])
         }
     }
 
     var onClick: ((Int, NoteInfo) -> Unit)? = null
 
+    var deletePos: ((Int, NoteInfo) -> Unit)? = null
+
     fun setOnClickListener(onClick: (Int, NoteInfo) -> Unit) {
         this.onClick = onClick
+    }
+
+    fun deletePosition(deletePos: (Int, NoteInfo) -> Unit) {
+        this.deletePos = deletePos
     }
 
 
