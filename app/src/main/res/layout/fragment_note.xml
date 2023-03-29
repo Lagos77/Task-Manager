@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient"
+        tools:context=".presentation.note.NoteFragment">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#030B31"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/fragmentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center"
+                android:text="@string/notes"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/inputTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/frameLayout"
+            android:layout_margin="10dp"
+            android:autofillHints="Android"
+            android:background="@color/white"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:padding="7dp" />
+
+        <EditText
+            android:id="@+id/edText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnUpdate"
+            android:layout_below="@+id/inputTitle"
+            android:layout_margin="10dp"
+            android:autofillHints="Today I'm going to..."
+            android:background="@color/white"
+            android:gravity="start|top"
+            android:hint="@string/note_text"
+            android:inputType="textMultiLine"
+            android:padding="7dp"
+            android:singleLine="false" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            style="@style/CustomButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:text="@string/button" />
+    </RelativeLayout>
+
+
+</layout>

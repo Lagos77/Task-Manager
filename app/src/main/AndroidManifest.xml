@@ -3,17 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".Application"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoApp"
         tools:targetApi="31">
         <activity
-            android:name="com.example.todoapp.MainActivity"
+            android:name=".presentation.create.CreateUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.login.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.SecondActivity"
             android:exported="true"
             android:theme="@style/Theme.AppSplash">
             <intent-filter>

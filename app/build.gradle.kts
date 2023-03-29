@@ -3,6 +3,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
+    id("com.google.dagger.hilt.android")
 }
 
 kapt {
@@ -15,6 +17,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -54,18 +57,32 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("com.google.firebase:firebase-firestore:24.4.4")
     testImplementation(Dependency.junit)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+
+    implementation(platform("com.google.firebase:firebase-bom:26.4.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation ("com.google.firebase:firebase-auth-ktx")
+
     //Hilt
     hilt()
+
+    //viewModel
+    lifecycle()
 
     //Splash Screen
     splashScreen()
 
     //Navigation
     navigationComponent()
+
+    //Scopes
+    scopes()
+
+    //Room
+    room()
+
 }

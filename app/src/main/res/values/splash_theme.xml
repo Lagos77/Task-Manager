@@ -2,10 +2,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Splash Screen Theme. -->
     <style name="Theme.AppSplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#e67d20</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/todoicon</item>
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_wrapper</item>
         <item name="windowSplashScreenAnimationDuration">500</item>
         <item name="postSplashScreenTheme">@style/Theme.ToDoApp</item>
+
 
         <!-- Status bar and Nav bar configs -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
