@@ -29,4 +29,6 @@ class ListViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
             roomUseCase.deleteNote(noteInfo)
         }
     }
+
+
 }
