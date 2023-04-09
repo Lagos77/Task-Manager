@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.todoapp.databinding.FragmentNoteBinding
-import com.app.todoapp.util.Utils
-import com.app.todoapp.util.formatTime
-import com.example.domain.entity.NoteInfo
+import com.app.todoapp.util.Constants.Create
+import com.app.todoapp.util.Constants.CreateNote
+import com.app.todoapp.util.Constants.Update
+import com.app.todoapp.util.Constants.UpdateNote
 import dagger.hilt.android.AndroidEntryPoint
-import java.time.LocalDate
-import java.time.LocalTime
 
 @AndroidEntryPoint
 class NoteFragment : Fragment() {
@@ -22,9 +20,6 @@ class NoteFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: NoteViewModel by viewModels()
     private val args: NoteFragmentArgs by navArgs()
-    private var noteId = -1
-    private val date = LocalDate.now()
-    private val time = LocalTime.now().formatTime()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,66 +27,36 @@ class NoteFragment : Fragment() {
     ): View {
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
 
-        if (noteId == args.noteId) {
-            binding.fragmentTitle.text = "Create"
-            binding.btnUpdate.text = "Create note"
+        viewModel.createNotification(requireContext())
+
+        if (-1 == args.noteId) {
+            binding.fragmentTitle.text = Create
+            binding.btnUpdate.text = CreateNote
         } else {
-            binding.fragmentTitle.text = "Update"
+            binding.fragmentTitle.text = Update
             binding.inputTitle.setText(args.title)
             binding.edText.setText(args.note)
-            binding.btnUpdate.text = "Update note"
+            binding.btnUpdate.text = UpdateNote
         }
 
+
         binding.btnUpdate.setOnClickListener {
-            when {
-                noteId == args.noteId -> {
-                    if (binding.edText.text.isNullOrBlank() || binding.inputTitle.text.isNullOrBlank()) {
-                        Utils.showToast("Fields can't be empty", requireContext())
-                    } else {
-                        addNote()
-                        val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
-                        Utils.showToast("Note added!", requireContext())
-                        findNavController().navigate(action)
-                    }
-                }
+            viewModel.checkNote(
+                args.noteId,
+                -1,
+                binding.inputTitle,
+                binding.edText,
+                this,
+                requireContext()
+            )
+        }
 
-                noteId != args.noteId -> {
-                    if (binding.edText.text.isNullOrBlank() || binding.inputTitle.text.isNullOrBlank()) {
-                        Utils.showToast("Fields can't be empty", requireContext())
-                    } else {
-                        updateNote()
-                        val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
-                        Utils.showToast("Update successful!", requireContext())
-                        findNavController().navigate(action)
-                    }
-                }
-            }
-
-
+        binding.timer.setOnClickListener {
+            viewModel.showDateTimePicker(binding.inputTitle.text.toString(), requireContext(), this)
         }
 
         return binding.root
     }
 
-    private fun addNote() {
-        val noteInfo =
-            NoteInfo(
-                0,
-                binding.inputTitle.text.toString(),
-                binding.edText.text.toString(),
-                date.toString(),
-                time.toString()
-            )
-        viewModel.addNote(noteInfo)
-    }
-
-    private fun updateNote() {
-        val noteInfo = NoteInfo(
-            args.noteId,
-            binding.inputTitle.text.toString(),
-            binding.edText.text.toString(), date.toString(), time.toString()
-        )
-        viewModel.updateNote(noteInfo)
-    }
 
 }
