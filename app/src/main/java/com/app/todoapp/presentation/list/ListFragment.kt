@@ -16,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: ListViewModel by viewModels()
     private val listAdapter: ListAdapter by lazy { ListAdapter() }
 
@@ -30,7 +29,13 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getAllNotes()
+        binding.recycleList.adapter = listAdapter
+        observeList()
+        initOnClickListener()
+    }
 
+    private fun initOnClickListener() {
         listAdapter.setOnClickListener { _, item ->
             val action = ListFragmentDirections.actionListFragmentToNoteFragment(
                 item.id,
@@ -41,26 +46,21 @@ class ListFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
-
         listAdapter.deletePosition { _, noteInfo ->
             requireContext().alert(
                 "Deleting",
                 "Are you sure you want to delete ${noteInfo.title}?",
-                "Yes",{
+                "Yes", {
                     requireContext().toast("${noteInfo.title} deleted!")
                     viewModel.delete(noteInfo)
-                },"No", {}
+                }, "No", {}
             )
         }
-
-
-        binding.recycleList.adapter = listAdapter
         binding.fab.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToNoteFragment(-1, "", "", "", "")
             findNavController().navigate(action)
         }
-        observeList()
-        viewModel.getAllNotes()
+
     }
 
     private fun observeList() {

@@ -11,14 +11,15 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.app.todoapp.util.AlarmReceiver
 import com.app.todoapp.util.Constants.Channel_Name
-import com.app.todoapp.util.Constants.CreateNotif
+import com.app.todoapp.util.Constants.CreateNotification
 import com.app.todoapp.util.Constants.Description
 import com.app.todoapp.util.Constants.EmptyField
 import com.app.todoapp.util.Constants.NoteAdded
 import com.app.todoapp.util.Constants.NoteUpdate
 import com.app.todoapp.util.formatTime
 import com.app.todoapp.util.toast
-import com.example.data.utils.Constants
+import com.example.data.utils.NotificationConstants
+import com.example.data.utils.NotificationConstants.channelId
 import com.example.domain.entity.NoteInfo
 import com.example.domain.note.NotesRoomUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -59,9 +60,16 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
         }
     }
 
-    fun checkNote(argsId: Int, id: Int, title: EditText, note: EditText, fragment: Fragment, context: Context) {
-        when {
-            id == argsId -> {
+    fun checkNote(
+        argsId: Int,
+        id: Int,
+        title: EditText,
+        note: EditText,
+        fragment: Fragment,
+        context: Context
+    ) {
+        when (id) {
+            argsId -> {
                 if (title.text.isNullOrBlank() || note.text.isNullOrBlank()
                 ) {
                     context.toast(EmptyField)
@@ -75,10 +83,9 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
                     fragment.findNavController().navigate(action)
                 }
             }
-
             else -> {
                 if (title.text.isNullOrBlank() || note.text.isNullOrBlank()
-                ){
+                ) {
                     context.toast(EmptyField)
                 } else {
                     updateNote(
@@ -97,7 +104,7 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
     fun createNotification(context: Context) {
         val importance = NotificationManager.IMPORTANCE_DEFAULT
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(Constants.channelId, Channel_Name, importance)
+            val channel = NotificationChannel(channelId, Channel_Name, importance)
             channel.description = Description
             val notification =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -105,7 +112,7 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
         }
     }
 
-    fun showDateTimePicker(inputTitle: String, context: Context, fragment: Fragment) {
+    fun showDateTimePicker(inputTitle: String,noteId: Int, context: Context, fragment: Fragment) {
         val currentDate = Calendar.getInstance()
         val year = currentDate.get(Calendar.YEAR)
         val month = currentDate.get(Calendar.MONTH)
@@ -115,6 +122,7 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
             val timePicker = TimePickerDialog(context, { _, selectedHour, selectedMinute ->
                 scheduleNotification(
                     inputTitle,
+                    noteId,
                     selectedYear,
                     selectedMonth,
                     selectedDay,
@@ -133,6 +141,7 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
 
     private fun scheduleNotification(
         inputTitle: String,
+        noteId: Int,
         year: Int,
         month: Int,
         day: Int,
@@ -142,10 +151,10 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
         fragment: Fragment
     ) {
         val intent = Intent(context, AlarmReceiver::class.java)
-        intent.putExtra(Constants.titleExtra, "Reminder: $inputTitle")
+        intent.putExtra(NotificationConstants.titleExtra, "Reminder: $inputTitle")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            Constants.notificationId,
+            noteId,
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -159,6 +168,6 @@ class NoteViewModel @Inject constructor(private val roomUseCase: NotesRoomUseCas
         )
         val action = NoteFragmentDirections.actionNoteFragmentToListFragment()
         fragment.findNavController().navigate(action)
-        context.toast(CreateNotif)
+        context.toast(CreateNotification)
     }
 }
