@@ -1,10 +1,8 @@
 package com.app.todoapp.presentation
 
-import android.os.Build.VERSION_CODES.N
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.app.todoapp.R
 import com.app.todoapp.databinding.ActivitySecondBinding
@@ -21,10 +19,7 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-//        val navCon = Navigation.findNavController(this, R.id.fragment)
-//        binding.bottomNav.setupWithNavController(navCon)
+        navHostFragment.navController
 
     }
 

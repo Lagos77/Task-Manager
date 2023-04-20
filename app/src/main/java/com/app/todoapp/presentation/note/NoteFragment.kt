@@ -12,6 +12,7 @@ import com.app.todoapp.util.Constants.Create
 import com.app.todoapp.util.Constants.CreateNote
 import com.app.todoapp.util.Constants.Update
 import com.app.todoapp.util.Constants.UpdateNote
+import com.example.data.utils.NotificationConstants.notificationId
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,8 +27,11 @@ class NoteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        viewModel.createNotification(requireContext())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         if (-1 == args.noteId) {
             binding.fragmentTitle.text = Create
@@ -52,10 +56,15 @@ class NoteFragment : Fragment() {
         }
 
         binding.timer.setOnClickListener {
-            viewModel.showDateTimePicker(binding.inputTitle.text.toString(), requireContext(), this)
+            notificationId = args.noteId
+            viewModel.showDateTimePicker(
+                binding.inputTitle.text.toString(),
+                args.noteId,
+                requireContext(),
+                this
+            )
+            viewModel.createNotification(requireContext())
         }
-
-        return binding.root
     }
 
 
