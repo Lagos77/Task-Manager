@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.app.todoapp.databinding.FragmentListBinding
+import com.app.todoapp.util.Constants.Deleting
+import com.app.todoapp.util.Constants.No
+import com.app.todoapp.util.Constants.Yes
 import com.app.todoapp.util.alert
 import com.app.todoapp.util.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,12 +51,12 @@ class ListFragment : Fragment() {
         }
         listAdapter.deletePosition { _, noteInfo ->
             requireContext().alert(
-                "Deleting",
+                Deleting,
                 "Are you sure you want to delete ${noteInfo.title}?",
-                "Yes", {
+                Yes, {
                     requireContext().toast("${noteInfo.title} deleted!")
                     viewModel.delete(noteInfo)
-                }, "No", {}
+                }, No, {}
             )
         }
         binding.fab.setOnClickListener {

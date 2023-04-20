@@ -27,8 +27,11 @@ class NoteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         if (-1 == args.noteId) {
             binding.fragmentTitle.text = Create
@@ -62,8 +65,6 @@ class NoteFragment : Fragment() {
             )
             viewModel.createNotification(requireContext())
         }
-
-        return binding.root
     }
 
 

@@ -14,4 +14,8 @@ object Constants {
     const val NoteAdded : String = "Note has been added!"
     const val NoteUpdate : String = "Note has been updated!"
     const val CreateNotification: String = "Notification has been created"
+
+    const val Deleting : String = "Deleting"
+    const val Yes : String = "Yes"
+    const val No : String = "No"
 }
